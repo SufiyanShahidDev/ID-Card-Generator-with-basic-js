@@ -1,11 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Professional Student ID Generator</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
+
 <body>
-    
+
+    <section class="container">
+        <section class="text-center mb-5">
+            <h1 class="fw-bold" style="color: var(--primary-color);">Student ID Card Generator</h1>
+            <p class="text-muted">Fill in your details to generate your official ID card</p>
+        </section>
+
+        <!-- ID Card Form -->
+        <section class="glass-card" id="formContainer">
+            <form id="idForm" novalidate>
+                <section class="row g-4">
+                    <section class="col-md-6">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="inputName" class="form-control" placeholder="John Doe">
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label">Select Course</label>
+                        <select id="inputCourse" class="form-select">
+                            <option value="" selected disabled>Choose Course...</option>
+                            <option value="Web Development">Web Development</option>
+                            <!-- <option value="Cyber Security">Cyber Security</option>
+                            <option value="Graphic Designing">Graphic Designing</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="App Development">App Development</option>
+                        </select>
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label">CNIC Number</label>
+                        <input type="text" id="inputCNIC" class="form-control" placeholder="12345-1234567-1">
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label d-block">Batch No.</label>
+                        <section class="mt-2">
+                            <section class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="batch" id="batch19" value="19">
+                                <label class="form-check-label" for="batch19">Batch 19</label>
+                            </section>
+                            <section class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="batch" id="batch20" value="20">
+                                <label class="form-check-label" for="batch20">Batch 20</label>
+                            </section>
+                        </section>
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label">Class Days</label>
+                        <select id="inputDays" class="form-select">
+                            <option value="" selected disabled>Select Days...</option>
+                            <option value="Mon-Wed-Fri">Monday-Wednesday-Friday</option>
+                            <option value="Tue-Thu-Sat">Tuesday-Thursday-Saturday</option>
+                        </select>
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label">Class Timing</label>
+                        <select id="inputTime" class="form-select">
+                            <option value="" selected disabled>Select Timing...</option>
+                            <option value="09:00AM - 11:00AM">09:00AM - 11:00AM</option>
+                            <option value="11:00AM - 01:00PM">11:00AM - 01:00PM</option>
+                            <option value="02:00PM - 04:00PM">02:00PM - 04:00PM</option>
+                            <option value="07:00PM - 09:00PM">07:00PM - 09:00PM</option>
+                        </select>
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label">Choose Campus</label>
+                        <select id="inputCampus" class="form-select">
+                            <option value="" selected disabled>Select Campus...</option>
+                            <option value="Bahadurabad Campus">Bahadurabad Campus</option>
+                            <option value="Gulshan Campus">Gulshan Campus</option>
+                            <option value="Numaish Campus">Numaish Campus</option>
+                            <option value="Clifton Campus">Clifton Campus</option>
+                        </select>
+                    </section>
+
+                    <section class="col-md-6">
+                        <label class="form-label">Upload Profile Photo</label>
+                        <input type="file" id="inputPhoto" class="form-control" accept="image/*">
+                    </section>
+
+                    <section class="col-12 text-center">
+                        <button type="submit" class="btn btn-generate">GENERATE ID CARD</button>
+                    </section>
+                </section>
+            </form>
+        </section> -->
+
+        <!-- ID Card Section -->
+        <section id="idCardContainer" class="text-center">
+            <h3 class="mb-4">Your Student ID Card</h3>
+            <section class="id-card" id="printableCard">
+                <section class="card-header">
+                    <h2>ID Card Generator</h2>
+                </section>
+
+                <section class="profile-section">
+                    <img id="cardImage" src="https://via.placeholder.com/150" class="profile-img" alt="Profile">
+                </section>
+
+                <section class="student-details">
+                    <section id="cardName" class="student-name">Student Name</section>
+                    <section id="cardCourse" class="student-course">Course Name</section>
+
+                    <section class="info-grid">
+                        <section class="info-item">
+                            <label>CNIC</label>
+                            <span id="cardCNIC">00000-0000000-0</span>
+                        </section>
+                        <section class="info-item">
+                            <label>Batch</label>
+                            <span id="cardBatch">00</span>
+                        </section>
+                        <section class="info-item">
+                            <label>Days</label>
+                            <span id="cardDays">Mon-Wed-Fri</span>
+                        </section>
+                        <section class="info-item">
+                            <label>Timing</label>
+                            <span id="cardTime">00:00 - 00:00</span>
+                        </section>
+                        <section class="info-item" style="grid-column: span 2;">
+                            <label>Campus</label>
+                            <span id="cardCampus">Campus Location</span>
+                        </section>
+                        <section class="info-item" style="grid-column: span 2; text-align: center;">
+                            <label>Roll Number</label>
+                            <span id="cardRoll" style="font-weight: bold; color: var(--secondary-color);">S-00000</span>
+                        </section>
+                    </section>
+                </section>
+
+                <section class="card-footer">
+                    Made by Sufiyan Shahid Dev
+                </section>
+            </section>
+
+            <section class="mb-5">
+                <button class="btn btn-secondary mt-3 d-block mx-auto" onclick="location.reload()">Reset Form</button>
+            </section>
+        </section>
+    </section>
+
+
 </body>
+<script src="app.js"></script>
+
 </html>
